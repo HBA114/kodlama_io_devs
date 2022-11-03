@@ -48,7 +48,7 @@ public class ProgrammingLanguagesController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ProgrammingLanguage delete(@PathVariable("id") int id) throws Exception {
-        return programmingLanguageService.delete(id);
+    public void delete(@PathVariable("id") int id) throws Exception {
+        programmingLanguageService.delete(id);
     }
 }

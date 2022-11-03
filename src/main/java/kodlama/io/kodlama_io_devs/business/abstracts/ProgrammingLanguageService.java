@@ -11,7 +11,7 @@ public interface ProgrammingLanguageService {
 
     ProgrammingLanguage create(String name) throws Exception;
 
-    ProgrammingLanguage delete(int id) throws Exception;
+    void delete(int id) throws Exception;
 
     ProgrammingLanguage update(int id, String name) throws Exception;
 }

@@ -21,27 +21,31 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
     @Override
     public List<ProgrammingLanguage> getAll() {
-        return programmingLanguageRepository.getAll();
+        return programmingLanguageRepository.findAll();
     }
 
     @Override
-    public ProgrammingLanguage getById(int id) throws Exception {
-        return programmingLanguageRepository.getById(id);
+    public ProgrammingLanguage getById(int id) {
+        return programmingLanguageRepository.findById(id).get();
     }
 
     @Override
     public ProgrammingLanguage create(String name) throws Exception {
-        return programmingLanguageRepository.create(name);
+        ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
+        programmingLanguage.setName(name);
+        return programmingLanguageRepository.save(programmingLanguage);
     }
 
     @Override
-    public ProgrammingLanguage delete(int id) throws Exception {
-        return programmingLanguageRepository.delete(id);
+    public void delete(int id) {
+        programmingLanguageRepository.deleteById(id);
     }
 
     @Override
     public ProgrammingLanguage update(int id, String name) throws Exception {
-        return programmingLanguageRepository.update(id, name);
+        ProgrammingLanguage programmingLanguage = getById(id);
+        programmingLanguage.setName(name);
+        return programmingLanguageRepository.save(programmingLanguage);
     }
 
 }
