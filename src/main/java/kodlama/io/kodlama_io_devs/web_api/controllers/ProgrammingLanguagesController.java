@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlama.io.kodlama_io_devs.business.abstracts.ProgrammingLanguageService;
+import kodlama.io.kodlama_io_devs.business.requests.CreateProgrammingLanguageRequest;
+import kodlama.io.kodlama_io_devs.business.responses.GetAllProgrammingLanguagesResponse;
 import kodlama.io.kodlama_io_devs.entities.ProgrammingLanguage;
 
 @RestController
@@ -24,11 +26,11 @@ public class ProgrammingLanguagesController {
         this.programmingLanguageService = programmingLanguageService;
     }
 
-    //! You can use swagger ui for sending requests
+    // ! You can use swagger ui for sending requests
     // http://localhost:8080/swagger-ui/index.html
 
     @GetMapping("/getall")
-    public List<ProgrammingLanguage> getAll() {
+    public List<GetAllProgrammingLanguagesResponse> getAll() {
         return programmingLanguageService.getAll();
     }
 
@@ -38,8 +40,8 @@ public class ProgrammingLanguagesController {
     }
 
     @PostMapping("/create")
-    public ProgrammingLanguage create(String name) throws Exception {
-        return programmingLanguageService.create(name);
+    public ProgrammingLanguage create(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
+        return programmingLanguageService.create(createProgrammingLanguageRequest);
     }
 
     @PutMapping("/update/{id}")

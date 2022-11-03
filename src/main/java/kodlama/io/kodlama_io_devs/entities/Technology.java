@@ -1,35 +1,31 @@
 package kodlama.io.kodlama_io_devs.entities;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Table(name = "programmingLanguages")
-@Getter
-@Setter
+@Table(name = "technologies")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ProgrammingLanguage {
+public class Technology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "programmingLanguage")
-    private List<Technology> technologies;
+    @ManyToOne
+    private ProgrammingLanguage programmingLanguage;
 }
