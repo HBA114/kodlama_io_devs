@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlama.io.kodlama_io_devs.business.abstracts.ProgrammingLanguageService;
 import kodlama.io.kodlama_io_devs.business.requests.CreateProgrammingLanguageRequest;
 import kodlama.io.kodlama_io_devs.business.responses.GetAllProgrammingLanguagesResponse;
+import kodlama.io.kodlama_io_devs.business.responses.GetAllProgrammingLanguagesWithTechnologiesResponse;
 import kodlama.io.kodlama_io_devs.entities.ProgrammingLanguage;
 
 @RestController
@@ -32,6 +33,11 @@ public class ProgrammingLanguagesController {
     @GetMapping("/getall")
     public List<GetAllProgrammingLanguagesResponse> getAll() {
         return programmingLanguageService.getAll();
+    }
+
+    @GetMapping("/getallWithTech")
+    public List<GetAllProgrammingLanguagesWithTechnologiesResponse> getAllWithTech() {
+        return programmingLanguageService.getAllWithTechnologies();
     }
 
     @GetMapping("/getbyid/{id}")
