@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlama.io.kodlama_io_devs.business.abstracts.TechnologyService;
 import kodlama.io.kodlama_io_devs.business.requests.CreateTechnologyRequest;
+import kodlama.io.kodlama_io_devs.business.requests.UpdateTechnologyRequest;
 import kodlama.io.kodlama_io_devs.entities.Technology;
 
 @RestController
@@ -39,5 +41,10 @@ public class TechnologiesController {
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id") int id) throws Exception{
         technologyService.delete(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public Technology update(@PathVariable("id") int id, UpdateTechnologyRequest updateTechnologyRequest) {
+        return technologyService.update(id, updateTechnologyRequest);
     }
 }
